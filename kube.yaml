@@ -1,0 +1,15 @@
+---
+parameters:
+- name: kubernetes.flavor
+  value: metal
+- name: kubernetes.api
+  kind: user
+  parameters:
+  - name: endpoint
+    fromEnv: METAL_K8S_API
+  - name: caCert
+    fromEnv: KUBERNETES_API_CA_CERT
+  - name: clientCert
+    fromEnv: KUBERNETES_API_CLIENT_CERT
+  - name: clientKey
+    fromEnv: KUBERNETES_API_CLIENT_KEY

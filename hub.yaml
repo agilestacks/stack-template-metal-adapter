@@ -1,0 +1,65 @@
+---
+version: 1
+kind: stack
+meta:
+  name: k8s-metal-adapter:1
+  brief: Bare-metal metal Kubernetes import adapter stack
+
+components:
+- name: k8s-metal
+  source:
+    dir: components/k8s-metal
+- name: tiller
+  source:
+    dir: components/tiller
+- name: cert-manager
+  source:
+    dir: components/cert-manager
+- name: tls-host-controller
+  source:
+    dir: tls-host-controller
+- name: traefik
+  source:
+    dir: components/traefik
+- name: dex
+  source:
+    dir: components/dex
+- name: kube-dashboard
+  source:
+    dir: components/kube-dashboard
+- name: automation-tasks-namespace
+  source:
+    dir: components/namespace
+
+requires:
+- aws
+
+lifecycle:
+  verbs: [deploy, undeploy]
+  order:
+  - k8s-metal
+  - tiller
+  - cert-manager
+  - tls-host-controller
+  - traefik
+  - dex
+  - kube-dashboard
+  - automation-tasks-namespace
+  requires:
+    optional:
+    - component.cert-manager.enabled:cert-manager
+    - component.kubernetes-dashboard.enabled:kube-dashboard
+
+outputs:
+- name: k8s-metal:dns.domain
+- name: k8s-metal:kubernetes.flavor
+- name: k8s-metal:kubernetes.api.endpoint
+- name: k8s-metal:cloud.kind
+- name: k8s-metal:cloud.region
+- name: traefik:component.ingress.protocol
+- name: traefik:component.ingress.fqdn
+- name: traefik:component.ingress.ssoFqdn
+- name: traefik:component.ingress.urlPrefix
+- name: traefik:component.ingress.ssoUrlPrefix
+- name: dex:component.dex.issuer
+- name: kube-dashboard:component.kubernetes-dashboard.url

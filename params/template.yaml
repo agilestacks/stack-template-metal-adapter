@@ -1,0 +1,49 @@
+---
+parameters:
+- name: component.ingress
+  parameters:
+  - name: staticIp
+    fromEnv: INGRESS_STATIC_IP
+    empty: allow
+  - name: staticHost
+    fromEnv: INGRESS_STATIC_HOST
+    empty: allow
+  - name: urlPrefix
+    value: app
+  - name: ssoUrlPrefix
+    value: apps
+  # - name: kubernetes
+  #   parameters:
+  #   - name: serviceType
+  #     value: NodePort
+  #   - name: nodePort.http
+  #     value: 80
+  #   - name: nodePort.https
+  #     value: 443
+
+# - name: component.traefik.kubernetes
+#   parameters:
+#   - name: nodeSelector
+#     value: '{ingress: "true"}'
+#   - name: tolerations
+#     value: '[{key: node-role.kubernetes.io/master, operator: Exists, effect: NoSchedule}]'
+
+- name: component.dex
+  parameters:
+  - name: namespace
+    value: dex
+  - name: okta.issuer
+    fromEnv: DEX_OKTA_APP_ISSUER
+  - name: okta.clientId
+    fromEnv: DEX_OKTA_APP_CLIENT_ID
+  - name: okta.clientSecret
+    fromEnv: DEX_OKTA_APP_CLIENT_SECRET
+
+- name: component.namespace
+  component: automation-tasks-namespace
+  parameters:
+  - name: name
+    value: automation-tasks
+
+- name: component.tls-host-controller.namespace
+  value: kube-system
