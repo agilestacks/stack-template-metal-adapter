@@ -3,7 +3,7 @@
 export DOMAIN_NAME ?= eks-1.cloud-account-name.superhub.io
 
 STATE_BUCKET ?= agilestacks.cloud-account-name.superhub.io
-STATE_REGION ?= us-east-2
+STATE_REGION ?= us-east-1
 
 ELABORATE_FILE_FS := .hub/$(DOMAIN_NAME).elaborate
 ELABORATE_FILE_S3 := s3://$(STATE_BUCKET)/$(DOMAIN_NAME)/hub/metal-adapter/hub.elaborate
@@ -11,7 +11,7 @@ ELABORATE_FILES   := $(ELABORATE_FILE_FS),$(ELABORATE_FILE_S3)
 STATE_FILES       := .hub/$(DOMAIN_NAME).state,s3://$(STATE_BUCKET)/$(DOMAIN_NAME)/hub/metal-adapter/hub.state
 
 TEMPLATE_PARAMS ?= params/template.yaml
-STACK_PARAMS    ?= params/$(NAME).$(BASE_DOMAIN).yaml
+STACK_PARAMS    ?= params/$(DOMAIN_NAME).yaml
 
 HUB_OPTS ?=
 
