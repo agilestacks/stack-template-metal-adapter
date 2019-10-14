@@ -18,9 +18,9 @@ components:
 - name: tls-host-controller
   source:
     dir: tls-host-controller
-- name: traefik
+- name: traefik-metal
   source:
-    dir: components/traefik
+    dir: components/traefik-metal
 - name: dex
   source:
     dir: components/dex
@@ -41,7 +41,7 @@ lifecycle:
   - tiller
   - cert-manager
   - tls-host-controller
-  - traefik
+  - traefik-metal
   - dex
   - kube-dashboard
   - automation-tasks-namespace
