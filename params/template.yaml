@@ -39,11 +39,21 @@ parameters:
   - name: okta.clientSecret
     fromEnv: DEX_OKTA_APP_CLIENT_SECRET
 
-- name: component.namespace
-  component: automation-tasks-namespace
-  parameters:
-  - name: name
-    value: automation-tasks
+- name: component.dns.server.ip
+  fromEnv: DNS_SERVER_IP
 
 - name: component.tls-host-controller.namespace
   value: kube-system
+
+- name: component.ceph.flex.volume.path
+  value: "/usr/libexec/kubernetes/kubelet-plugins/volume/exec"
+
+- name: component.cert-manager.enabled
+  value: true
+
+- name: component.ceph.enabled
+  value: true
+
+- name: component.deephorizon.enabled
+  value: true
+

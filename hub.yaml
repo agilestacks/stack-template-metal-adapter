@@ -27,9 +27,12 @@ components:
 - name: kube-dashboard
   source:
     dir: components/kube-dashboard
-- name: automation-tasks-namespace
+- name: deephorizon
   source:
-    dir: components/namespace
+    dir: components/deephorizon
+- name: ceph
+  source:
+    dir: components/ceph
 
 requires:
 - aws
@@ -41,13 +44,17 @@ lifecycle:
   - tiller
   - cert-manager
   - tls-host-controller
+  - deephorizon
   - traefik-metal
+  - ceph
   - dex
   - kube-dashboard
-  - automation-tasks-namespace
   requires:
     optional:
     - component.cert-manager.enabled:cert-manager
+    - component.cert-manager..enabled:tls-host-controller
+    - component.ceph.enabled:ceph
+    - component.deephorizon.enabled:deephorizon
     - component.kubernetes-dashboard.enabled:kube-dashboard
 
 outputs:
