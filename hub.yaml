@@ -33,6 +33,9 @@ components:
 - name: ceph
   source:
     dir: components/ceph
+- name: nfs-client-provisioner
+  source:
+    dir: components/nfs-client-provisioner
 
 requires:
 - aws
@@ -48,12 +51,14 @@ lifecycle:
   - traefik-metal
   - ceph
   - dex
+  - nfs-client-provisioner
   - kube-dashboard
   requires:
     optional:
     - component.cert-manager.enabled:cert-manager
     - component.cert-manager..enabled:tls-host-controller
     - component.ceph.enabled:ceph
+    - component.nfs-client-provisioner.enabled:nfs-client-provisioner
     - component.deephorizon.enabled:deephorizon
     - component.kubernetes-dashboard.enabled:kube-dashboard
 

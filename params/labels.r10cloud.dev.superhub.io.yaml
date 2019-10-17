@@ -1,0 +1,35 @@
+---
+
+parameters:
+- name: dns.domain
+  value: labels.r10cloud.dev.superhub.io
+- name: dns.name
+  value: labels
+- name: cloud.region
+  value: us-east-1
+- name: component.deephorizon.dns.zone
+  value: r10cloud.dev.superhub.io
+- name: component.deephorizon.dns.domain
+  value: labels
+- name: component.deephorizon.dns.servers-arr1.ip
+  value: ${component.dns.server.ip}
+- name: component.deephorizon.dns.servers-arr1.port
+  value: 53
+- name: component.deephorizon.dns.views-arr1.keyname
+  value: labels.r10cloud.dev.superhub.io
+- name: component.deephorizon.dns.views-arr1.hmac
+  value: hmac-sha256
+- name: component.deephorizon.dns.views-arr1.key
+  value: "gl581k5C8kf6yBV1BEM6c0pbPqZg2AJsCLYT8SRdj3g="
+- name: component.deephorizon.dns.views-arr2.keyname
+  value: apps.labels.r10cloud.dev.superhub.io
+- name: component.deephorizon.dns.views-arr2.hmac
+  value: hmac-sha256
+- name: component.deephorizon.dns.views-arr2.key
+  value: "91qUzaC3i8azu/mqyS5Xg7bnuvm1oWUHv2WLpLo5+6I="
+- name: component.deephorizon.dns.views-arr3.keyname
+  value: app.labels.r10cloud.dev.superhub.io
+- name: component.deephorizon.dns.views-arr3.hmac
+  value: hmac-sha256
+- name: component.deephorizon.dns.views-arr3.key
+  value: "IfY6ZIebguXySN0pRiZGV2YR4QzVPUO8Y1d7owvLYt8="
