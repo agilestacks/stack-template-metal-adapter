@@ -46,9 +46,9 @@ lifecycle:
   - k8s-metal
   - tiller
   - cert-manager
-  - tls-host-controller
   - deephorizon
   - traefik-metal
+  - tls-host-controller
   - ceph
   - dex
   - nfs-client-provisioner
