@@ -15,6 +15,9 @@ components:
 - name: cert-manager
   source:
     dir: components/cert-manager
+- name: external-dns
+  source:
+    dir: components/external-dns
 - name: tls-host-controller
   source:
     dir: tls-host-controller
@@ -46,6 +49,7 @@ lifecycle:
   - k8s-metal
   - tiller
   - cert-manager
+  - external-dns
   - deephorizon
   - traefik-metal
   - tls-host-controller
