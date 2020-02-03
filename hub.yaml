@@ -29,7 +29,7 @@ components:
     dir: components/dex
 - name: kube-dashboard
   source:
-    dir: components/kube-dashboard
+    dir: components/kube-dashboard2
 - name: deephorizon
   source:
     dir: components/deephorizon
