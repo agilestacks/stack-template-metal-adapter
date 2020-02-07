@@ -42,12 +42,6 @@ parameters:
 - name: component.external-dns.enabled
   value: true
 
-- name: component.nfs-client-provisioner
-  parameters:
-  - name: enabled
-    value: false
-  - name: nfs.server
-    fromEnv: NFS_CLIENT_SERVER
-  - name: nfs.path
-    fromEnv: NFS_CLIENT_MOUNT_PATH
+- name: component.nfs-client-provisioner.enabled
+  value: false
 
