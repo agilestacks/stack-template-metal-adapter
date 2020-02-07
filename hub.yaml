@@ -59,8 +59,7 @@ lifecycle:
   - kube-dashboard
   requires:
     optional:
-    - component.cert-manager.enabled:cert-manager
-    - component.cert-manager..enabled:tls-host-controller
+    - component.external-dns.enabled:external-dns
     - component.ceph.enabled:ceph
     - component.nfs-client-provisioner.enabled:nfs-client-provisioner
     - component.deephorizon.enabled:deephorizon

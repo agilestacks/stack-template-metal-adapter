@@ -12,21 +12,6 @@ parameters:
     value: app
   - name: ssoUrlPrefix
     value: apps
-  # - name: kubernetes
-  #   parameters:
-  #   - name: serviceType
-  #     value: NodePort
-  #   - name: nodePort.http
-  #     value: 80
-  #   - name: nodePort.https
-  #     value: 443
-
-# - name: component.traefik.kubernetes
-#   parameters:
-#   - name: nodeSelector
-#     value: '{ingress: "true"}'
-#   - name: tolerations
-#     value: '[{key: node-role.kubernetes.io/master, operator: Exists, effect: NoSchedule}]'
 
 - name: component.dex
   parameters:
@@ -39,9 +24,6 @@ parameters:
   - name: okta.clientSecret
     fromEnv: DEX_OKTA_APP_CLIENT_SECRET
 
-- name: component.dns.server.ip
-  fromEnv: DNS_SERVER_IP
-
 - name: component.tls-host-controller.namespace
   value: kube-system
 
@@ -52,15 +34,18 @@ parameters:
   value: true
 
 - name: component.ceph.enabled
-  value: true
+  value: false
 
 - name: component.deephorizon.enabled
+  value: false
+
+- name: component.external-dns.enabled
   value: true
 
 - name: component.nfs-client-provisioner
   parameters:
   - name: enabled
-    value: true
+    value: false
   - name: nfs.server
     fromEnv: NFS_CLIENT_SERVER
   - name: nfs.path
