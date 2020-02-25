@@ -57,6 +57,12 @@ lifecycle:
   - dex
   - nfs-client-provisioner
   - kube-dashboard
+  optional:
+  - external-dns
+  - kube-dashboard
+  - deephorizon
+  - ceph
+  - nfs-client-provisioner
   requires:
     optional:
     - component.external-dns.enabled:external-dns
