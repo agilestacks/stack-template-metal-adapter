@@ -30,8 +30,20 @@ parameters:
 - name: component.ceph.flex.volume.path
   value: "/usr/libexec/kubernetes/kubelet-plugins/volume/exec"
 
-- name: component.cert-manager.enabled
-  value: true
+- name: component.cert-manager
+  parameters:
+  - name: enabled
+    value: true
+  - name: solver
+    value: dns
+  - name: dnsSolverAws
+    parameters:
+    - name: enabled
+      value: true
+    - name: accessKey
+      fromEnv: DNS_SOLVER_ACCESS_KEY
+    - name: secretKey
+      fromEnv: DNS_SOLVER_SECRET_KEY
 
 - name: component.ceph.enabled
   value: false
@@ -39,11 +51,18 @@ parameters:
 - name: component.deephorizon.enabled
   value: false
 
-- name: component.external-dns.enabled
-  value: true
+- name: component.external-dns
+  parameters:
+  - name: enabled
+    value: true
+  - name: provider
+    value: coredns
+  - name: etcdEndpoints
+    fromEnv: PRIME_ETCD_ENDPOINT
+
 - name: component.external-dns.rfc2136.tsig.secret
   fromEnv: DNS_RFC2136_TSIG_SECRET
 
 - name: component.nfs-client-provisioner.enabled
-  value: false
+  value: true
 
