@@ -40,10 +40,6 @@ parameters:
     parameters:
     - name: enabled
       value: true
-    - name: accessKey
-      fromEnv: DNS_SOLVER_ACCESS_KEY
-    - name: secretKey
-      fromEnv: DNS_SOLVER_SECRET_KEY
 
 - name: component.ceph.enabled
   value: false

@@ -12,9 +12,6 @@ components:
 - name: tiller
   source:
     dir: components/tiller
-- name: dns-subzone
-  source:
-    dir: components/dns-subzone
 - name: cert-manager
   source:
     dir: components/cert-manager
@@ -51,7 +48,6 @@ lifecycle:
   order:
   - k8s-metal
   - tiller
-  - dns-subzone
   - cert-manager
   - external-dns
   - deephorizon
