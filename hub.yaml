@@ -14,10 +14,10 @@ components:
     dir: components/tiller
 - name: cert-manager
   source:
-    dir: components/cert-manager
+    dir: fixed_components/cert-manager
 - name: external-dns
   source:
-    dir: components/external-dns
+    dir: fixed_components/external-dns
 - name: tls-host-controller
   source:
     dir: tls-host-controller
@@ -26,7 +26,7 @@ components:
     dir: components/traefik-metal
 - name: dex
   source:
-    dir: components/dex
+    dir: fixed_components/dex
 - name: kube-dashboard
   source:
     dir: components/kube-dashboard2
