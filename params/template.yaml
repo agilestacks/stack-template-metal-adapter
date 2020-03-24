@@ -1,62 +1,79 @@
 ---
 parameters:
-- name: cloud.aws.accessKey
-  fromEnv: CLOUD_AWS_ACCESS_KEY
-- name: cloud.aws.secretKey
-  fromEnv: CLOUD_AWS_SECRET_KEY
-
-- name: component.ingress
-  parameters:
-  - name: staticIp
-    fromEnv: INGRESS_STATIC_IP
-    empty: allow
-  - name: staticHost
-    fromEnv: INGRESS_STATIC_HOST
-    empty: allow
-  - name: urlPrefix
-    value: app
-  - name: ssoUrlPrefix
-    value: apps
-
-- name: component.dex
-  parameters:
-  - name: namespace
-    value: dex
-  - name: okta.issuer
-    fromEnv: DEX_OKTA_APP_ISSUER
-  - name: okta.clientId
-    fromEnv: DEX_OKTA_APP_CLIENT_ID
-  - name: okta.clientSecret
-    fromEnv: DEX_OKTA_APP_CLIENT_SECRET
-
-- name: component.tls-host-controller.namespace
-  value: kube-system
-
-- name: component.ceph.flex.volume.path
-  value: "/usr/libexec/kubernetes/kubelet-plugins/volume/exec"
-
-- name: component.cert-manager
-  parameters:
-  - name: enabled
-    value: true
-  - name: defaultIssuerName
-    value: letsencrypt-prod-dns
-
-- name: component.ceph.enabled
-  value: false
-
-- name: component.deephorizon.enabled
-  value: false
-
-- name: component.external-dns
-  parameters:
-  - name: enabled
-    value: true
-  - name: provider
-    value: coredns
-  - name: coredns.etcdEndpoints
-    fromEnv: PRIME_ETCD_ENDPOINT
-
-- name: component.nfs-client-provisioner.enabled
-  value: true
-
+  - name: cloud.aws.accessKey
+    fromEnv: CLOUD_AWS_ACCESS_KEY
+  - name: cloud.aws.secretKey
+    fromEnv: CLOUD_AWS_SECRET_KEY
+  - name: dns.domain
+    value: cl1.cirras.dev.superhub.io
+  - name: kubernetes.api.caCert
+    value: ''
+  - name: kubernetes.api.clientCert
+    value: ''
+  - name: kubernetes.api.clientKey
+    value: ''
+  - name: kubernetes.api.endpoint
+    value: ''
+  - name: kubernetes.storage.defaultClass
+    value: local-storage
+  - name: component.ceph
+    parameters:
+      - name: enabled
+        value: false
+      - name: flex.volume.path
+        value: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+  - name: component.cert-manager
+    parameters:
+      - name: defaultIssuerName
+        value: letsencrypt-prod-dns
+      - name: enabled
+        value: 'true'
+  - name: component.deephorizon
+    parameters:
+      - name: enabled
+        value: false
+  - name: component.dex
+    parameters:
+      - name: namespace
+        value: dex
+      - name: okta.issuer
+        fromEnv: DEX_OKTA_APP_ISSUER
+      - name: okta.clientId
+        fromEnv: DEX_OKTA_APP_CLIENT_ID
+      - name: okta.clientSecret
+        fromEnv: DEX_OKTA_APP_CLIENT_SECRET
+  - name: component.external-dns
+    parameters:
+      - name: enabled
+        value: 'true'
+      - name: provider
+        value: coredns
+  - name: component.ingress
+    parameters:
+      - name: ssoUrlPrefix
+        value: apps
+      - name: staticHost
+        fromEnv: INGRESS_STATIC_HOST
+        empty: allow
+      - name: staticIp
+        kind: user
+        fromEnv: INGRESS_STATIC_IP
+        empty: allow
+      - name: urlPrefix
+        value: app
+  - name: component.kubernetes-dashboard
+    parameters:
+      - name: enabled
+        value: 'true'
+  - name: component.nfs-client-provisioner
+    parameters:
+      - name: enabled
+        value: 'true'
+      - name: nfs.path
+        value: /export/clusters/cl1
+      - name: nfs.server
+        value: 192.168.195.1
+  - name: component.tls-host-controller
+    parameters:
+      - name: namespace
+        value: kube-system

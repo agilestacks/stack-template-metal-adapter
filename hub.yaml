@@ -14,10 +14,10 @@ components:
     dir: components/tiller
 - name: cert-manager
   source:
-    dir: fixed_components/cert-manager
+    dir: components/cert-manager
 - name: external-dns
   source:
-    dir: fixed_components/external-dns
+    dir: components/external-dns
 - name: tls-host-controller
   source:
     dir: tls-host-controller
@@ -26,7 +26,7 @@ components:
     dir: components/traefik-metal
 - name: dex
   source:
-    dir: fixed_components/dex
+    dir: components/dex
 - name: kube-dashboard
   source:
     dir: components/kube-dashboard2
@@ -77,10 +77,10 @@ outputs:
 - name: k8s-metal:kubernetes.api.endpoint
 - name: k8s-metal:cloud.kind
 - name: k8s-metal:cloud.region
-- name: traefik:component.ingress.protocol
-- name: traefik:component.ingress.fqdn
-- name: traefik:component.ingress.ssoFqdn
-- name: traefik:component.ingress.urlPrefix
-- name: traefik:component.ingress.ssoUrlPrefix
+- name: traefik-metal:component.ingress.protocol
+- name: traefik-metal:component.ingress.fqdn
+- name: traefik-metal:component.ingress.ssoFqdn
+- name: traefik-metal:component.ingress.urlPrefix
+- name: traefik-metal:component.ingress.ssoUrlPrefix
 - name: dex:component.dex.issuer
 - name: kube-dashboard:component.kubernetes-dashboard.url
