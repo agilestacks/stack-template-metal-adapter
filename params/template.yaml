@@ -19,6 +19,7 @@ parameters:
   - name: component.etcd.url
     fromEnv: COMPONENT_ETCD_URL
     empty: allow
+    component: external-dns
   - name: component.ceph
     parameters:
       - name: enabled
