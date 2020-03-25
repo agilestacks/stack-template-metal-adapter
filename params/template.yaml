@@ -5,7 +5,7 @@ parameters:
   - name: cloud.aws.secretKey
     fromEnv: CLOUD_AWS_SECRET_KEY
   - name: dns.domain
-    value: cl1.cirras.dev.superhub.io
+    value: ''
   - name: kubernetes.api.caCert
     value: ''
   - name: kubernetes.api.clientCert
@@ -16,6 +16,9 @@ parameters:
     value: ''
   - name: kubernetes.storage.defaultClass
     value: local-storage
+  - name: component.etcd.url
+    fromEnv: COMPONENT_ETCD_URL
+    empty: allow
   - name: component.ceph
     parameters:
       - name: enabled
