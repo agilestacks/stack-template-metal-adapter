@@ -57,19 +57,6 @@ lifecycle:
   - dex
   - nfs-client-provisioner
   - kube-dashboard
-  optional:
-  - external-dns
-  - kube-dashboard
-  - deephorizon
-  - ceph
-  - nfs-client-provisioner
-  requires:
-    optional:
-    - component.external-dns.enabled:external-dns
-    - component.ceph.enabled:ceph
-    - component.nfs-client-provisioner.enabled:nfs-client-provisioner
-    - component.deephorizon.enabled:deephorizon
-    - component.kubernetes-dashboard.enabled:kube-dashboard
 
 outputs:
 - name: k8s-metal:dns.domain
